@@ -1,29 +1,17 @@
-# وثيقة اختيار التقنيات (Tech Stack Document)
+# 🛠️ Tech Stack Documentation
 
----
+## Core Framework & Interface
+* **Language:** Python 3.11
+* **Frontend / UI:** Streamlit
+* **Deployment:** Streamlit Community Cloud
 
-## 1. التقنيات المعتمدة (Adopted Technologies)
+## AI & LLM Engine
+* **API Provider:** Groq API
+* **Model:** Llama 3.3 70B (Versatile)
+* **Prompt Engineering:** Custom System Prompt for Requirement Elicitation
 
-| المكون / الأداة | الاختيار الفعلي | سبب الاختيار |
-| :--- | :--- | :--- |
-| **لغة البرمجة (Programming Language)** | **Python 3.10+** | توفر مكتبات متكاملة وسهولة التعامل مع معالجة النصوص وحزم الذكاء الاصطناعي. |
-| **واجهة المستخدم (User Interface)** | **Streamlit** | بناء واجهة تفاعلية سريعة ومناسبة لتطبيقات الدردشة بكود Python خالص ودون الحاجة لتطوير واجهات أمامية معقدة. |
-| **نموذج اللغة الكبير (LLM Provider)** | **Groq API (Llama 3.3 70B Versatile)** | أداء عالي وسرعة فائقة في استجابة النماذج، مع توفر خيار استدعاء سحابي مجاني وموثوق. |
-| **قاعدة البيانات (Database)** | **SQLite 3** | قاعدة بيانات خفيفة ومدمجة محلياً لحفظ سجل الحوارات (`project_data.db`) دون الحاجة لإدارة خوادم خارجية. |
-| **إدارة البيئة والأسرار (Environment Management)** | **python-dotenv (`.env`)** | إدارة الآمنة لمفاتيح API والحفاظ على الخصوصية بعيداً عن كود المشروع الأساسي. |
-
----
-
-## 2. البدائل المستبعدة وأسباب الاستبعاد (Rejected Alternatives)
-
-* **Anthropic / Claude API**: تم استبعاده لعدم توفر مفتاح API مفعّل حالياً وللحاجة إلى حل مجاني وسريع في التجربة.
-* **React / Next.js**: تم استبعادها لتجنب زيادة التعقيد والوقت المستغرق في بناء الواجهات الأمامية (Frontend).
-* **PostgreSQL / MySQL**: تم استبعادها لأن النظام محلي ولا يتطلب خادماً مظللياً أو قاعدة بيانات شبكية معقدة في هذه المرحلة.
-* **التدريب المحلي للنماذج (Local LLM Hosting)**: تم استبعاده لمتطلبات العتاد العالية (GPU) والتكلفة المرتفعة مقارنة بالحلول السحابية المتاحة عبر Groq.
-
----
-
-## 3. آلية التخزين وسياق النظام (System Storage & Context)
-
-* **التخزين المحلي**: يتم إنشاء جدول `chat_logs` تلقائياً عند التشغيل الأول للحفاظ على سجل الجلسات واسترجاعها عند الحاجة.
-* **توجيه النظام (System Prompt)**: تم ضبط المساعد ليتصرف كمهندس متطلبات برمجيات احترافي (Requirements Engineer) يطرح أسئلة تفاعلية متتابعة لاستخراج المتطلبات الوظيفية وغير الوظيفية.
+## Database & Persistence
+* **Database Provider:** Supabase
+* **Engine:** PostgreSQL
+* **Driver:** `psycopg2-binary`
+* **Logged Data:** Real-time chat history & requirements logs
