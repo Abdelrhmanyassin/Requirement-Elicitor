@@ -10,7 +10,7 @@ load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
 db_url = os.getenv("DATABASE_URL")
 
-st.set_page_config(page_title="مساعد استنباط المتطلبات", page_icon="🤖")
+st.set_page_config(page_title="AI Requirement Elicitor", page_icon="🤖")
 
 # 2. تنسيق الواجهة (CSS)
 st.markdown("""
@@ -147,17 +147,14 @@ with st.sidebar:
         st.session_state.messages = fresh_session()
         st.rerun()
     with st.expander("عن المشروع"):
-        st.caption("مساعد استنباط المتطلبات الذكي — مشروع تخرج، المرحلة 9 من 13. "
-                    "كل محادثة تُحفظ في قاعدة بيانات سحابية.")
 
 # 7. الترويسة (Header)
 st.markdown("""
 <div class="reb-hero">
   <div class="reb-icon">🤖</div>
   <div>
-    <span class="reb-badge">STAGE · 09</span>
-    <h1>مساعد استنباط المتطلبات الذكي</h1>
-    <p>مقابلة تفاعلية تحوّل فكرتك إلى وثيقة متطلبات رسمية (SRS)</p>
+    <span class="reb-badge">WELCOME</span>
+    <h1>AI Requirement Elicitor</h1>
   </div>
 </div>
 """, unsafe_allow_html=True)
