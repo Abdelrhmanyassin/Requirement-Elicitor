@@ -33,7 +33,6 @@ html, body, [class*="css"] { font-family: 'IBM Plex Sans Arabic', sans-serif; }
   background:rgba(255,255,255,.16); padding:3px 10px; border-radius:999px;
 }
 .reb-hero h1{ font-size:21px; margin:8px 0 2px; font-weight:700; }
-.reb-hero p{ margin:0; font-size:13px; opacity:.85; }
 
 [data-testid="stChatMessage"]{
   background:#FFFFFF; border:1px solid #E4DFD3; border-radius:14px;
@@ -146,7 +145,10 @@ with st.sidebar:
     if st.button("🗑️ مسح الجلسة وبدء جديد", use_container_width=True):
         st.session_state.messages = fresh_session()
         st.rerun()
+    
+    # تم إكمال الجزء الناقص هنا لإنهاء الكتلة بنجاح
     with st.expander("عن المشروع"):
+        st.write("أداة تفاعلية تستخدم الذكاء الاصطناعي لاستنباط وتوثيق متطلبات الأنظمة البرمجية بأسلوب سلس وحفظ الجلسات سحابياً.")
 
 # 7. الترويسة (Header)
 st.markdown("""
@@ -176,7 +178,6 @@ if prompt := st.chat_input("اكتب فكرتك هنا..."):
 
     with st.chat_message("assistant", avatar=AVATARS["assistant"]):
         with st.spinner("جاري التفكير وتحليل المتطلبات..."):
-            # نرسل فقط role/content لـ Groq (بدون حقل "time" المضاف للعرض)
             api_messages = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
             response = client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
